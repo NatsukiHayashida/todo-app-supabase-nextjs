@@ -16,10 +16,8 @@ export const getStaticProps: GetStaticProps = async () => {
     .from('notices')
     .select('*')
     .order('created_at', { ascending: true })
-  
   return { props: { tasks, notices } }
 }
-
 type StaticProps = {
   tasks: Task[]
   notices: Notice[]

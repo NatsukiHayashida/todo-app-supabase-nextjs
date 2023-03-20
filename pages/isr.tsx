@@ -7,7 +7,7 @@ import { supabase } from '../utils/supabase'
 import { Task, Notice } from '../types/types'
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.log('getStaticProps/ISR invoked')
+  console.log('getStaticProps/isr invoked')
   const { data: tasks } = await supabase
     .from('todos')
     .select('*')
@@ -16,15 +16,12 @@ export const getStaticProps: GetStaticProps = async () => {
     .from('notices')
     .select('*')
     .order('created_at', { ascending: true })
-
   return { props: { tasks, notices }, revalidate: 5 }
 }
-
 type StaticProps = {
   tasks: Task[]
   notices: Notice[]
 }
-
 const Isr: NextPage<StaticProps> = ({ tasks, notices }) => {
   const router = useRouter()
   return (
@@ -52,7 +49,7 @@ const Isr: NextPage<StaticProps> = ({ tasks, notices }) => {
         <a className="my-3 text-xs"> Link to ssr</a>
       </Link>
       <button className="mb-3 text-xs" onClick={() => router.push('/ssr')}>
-        Router to ssr
+        Route to ssr
       </button>
     </Layout>
   )

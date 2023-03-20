@@ -27,8 +27,8 @@ type StaticProps = {
 const Ssr: NextPage<StaticProps> = ({ tasks, notices }) => {
   const router = useRouter()
   return (
-    <Layout title="ssr">
-      <p className="mb-3 text-pink-500">Ssr</p>
+    <Layout title="SSR">
+      <p className="mb-3 text-pink-500">SSR</p>
       <ul className="mb-3">
         {tasks.map((task) => {
           return (
